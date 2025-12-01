@@ -1,0 +1,11 @@
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: org-runners
+  namespace: actions-runner-system
+spec:
+  replicas: 4
+  template:
+    spec:
+      organization: vlagopus
+      image: ghcr.io/jrbeverly/actions-runner:latest

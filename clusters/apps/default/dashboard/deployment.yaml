@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard
+  namespace: dashboard
+  labels:
+    app: dashboard
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: dashboard
+  template:
+    metadata:
+      labels:
+        app: "dashboard"
+    spec:
+      volumes:
+        - name: config
+          configMap:
+            name: configuration
+            defaultMode: 420
+      containers:
+      - name: dashboard
+        image: docker.io/b4bz/homer:latest
+        ports: 
+        - containerPort: 8080
+        volumeMounts:
+          - mountPath: /www/assets/config.yml
+            name: config
+            subPath: config.yml

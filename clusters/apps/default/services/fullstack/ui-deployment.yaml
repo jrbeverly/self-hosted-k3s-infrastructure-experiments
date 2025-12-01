@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fullstack
+  namespace: fullstack
+  labels:
+    app: fullstack
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: fullstack
+  template:
+    metadata:
+      labels:
+        app: "fullstack"
+    spec:
+      containers:
+      - name: fullstack
+        image: registry.home.jrbeverly.dev/frontend:latest
+        ports: 
+        - containerPort: 80
+        env:
+        - name: POSTGRES_USER
+          value: postgres
+        - name: POSTGRES_PASSWORD
+          value: postgres
+        - name: POSTGRES_DB
+          value: postgres
+        - name: CLIENT_URL
+          value: postgres.fullstack.svc.cluster.local

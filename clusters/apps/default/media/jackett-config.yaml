@@ -1,0 +1,206 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jackett-config
+  namespace: media
+data:
+  ServerConfig.json: |
+    {
+      "Port": 9117,
+      "AllowExternal": true,
+      "AllowCORS": false,
+      "APIKey": "dhc754u72kmd1k4cce5y33en9kayu7wj",
+      "AdminPassword": null,
+      "InstanceId": "dybw2dzw6cinm9iwm6r4ktyanwyh875jeg3fjy2esb2vl73m454ogcjlc9d1wg5u",
+      "BlackholeDir": null,
+      "UpdateDisabled": false,
+      "UpdatePrerelease": false,
+      "BasePathOverride": null,
+      "BaseUrlOverride": null,
+      "CacheEnabled": true,
+      "CacheTtl": 2100,
+      "CacheMaxResultsPerIndexer": 1000,
+      "FlareSolverrUrl": null,
+      "FlareSolverrMaxTimeout": 55000,
+      "OmdbApiKey": null,
+      "OmdbApiUrl": null,
+      "ProxyType": 0,
+      "ProxyUrl": null,
+      "ProxyPort": null,
+      "ProxyUsername": null,
+      "ProxyPassword": null,
+      "ProxyIsAnonymous": true
+    }
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jackett-indexers
+  namespace: media
+data:
+  animetosho.json: |
+    [
+      {
+        "id": "sitelink",
+        "type": "inputstring",
+        "name": "Site Link",
+        "value": "https://animetosho.org/"
+      },
+      {
+        "id": "cookieheader",
+        "type": "hiddendata",
+        "name": "CookieHeader",
+        "value": null
+      },
+      {
+        "id": "lasterror",
+        "type": "hiddendata",
+        "name": "LastError",
+        "value": null
+      },
+      {
+        "id": "tags",
+        "type": "inputtags",
+        "name": "Tags",
+        "value": ""
+      }
+    ]
+  eztv.json: |
+    [
+      {
+        "id": "sitelink",
+        "type": "inputstring",
+        "name": "Site Link",
+        "value": "https://eztv.re/"
+      },
+      {
+        "id": "cookieheader",
+        "type": "hiddendata",
+        "name": "CookieHeader",
+        "value": "PHPSESSID=93e22b5e589b8c63f661d49448c9a616"
+      },
+      {
+        "id": "lasterror",
+        "type": "hiddendata",
+        "name": "LastError",
+        "value": null
+      },
+      {
+        "id": "tags",
+        "type": "inputtags",
+        "name": "Tags",
+        "value": ""
+      }
+    ]
+  rarbg.json: |
+    [
+      {
+        "id": "sitelink",
+        "type": "inputstring",
+        "name": "Site Link",
+        "value": "https://rarbg.to/"
+      },
+      {
+        "id": "cookieheader",
+        "type": "hiddendata",
+        "name": "CookieHeader",
+        "value": ""
+      },
+      {
+        "id": "lasterror",
+        "type": "hiddendata",
+        "name": "LastError",
+        "value": "Exception (rarbg): The response was not JSON: The response was not JSON"
+      },
+      {
+        "id": "apiurl",
+        "type": "inputstring",
+        "name": "API URL",
+        "value": "https://torrentapi.org/pubapi_v2.php"
+      },
+      {
+        "id": "sortrequestedfromsite",
+        "type": "inputselect",
+        "name": "Sort requested from site",
+        "value": "last",
+        "options": {
+          "last": "created",
+          "seeders": "seeders",
+          "leechers": "leechers"
+        }
+      },
+      {
+        "id": "numberofretries",
+        "type": "inputselect",
+        "name": "Number of retries",
+        "value": "2",
+        "options": {
+          "0": "No retries (fail fast)",
+          "1": "1 retry (0.5s delay)",
+          "2": "2 retries (1s delay)",
+          "3": "3 retries (2s delay)",
+          "4": "4 retries (4s delay)",
+          "5": "5 retries (8s delay)"
+        }
+      },
+      {
+        "id": "tags",
+        "type": "inputtags",
+        "name": "Tags",
+        "value": ""
+      }
+    ]
+  thepiratebay.json: |
+    [
+      {
+        "id": "sitelink",
+        "type": "inputstring",
+        "name": "Site Link",
+        "value": "https://thepiratebay.org/"
+      },
+      {
+        "id": "cookieheader",
+        "type": "hiddendata",
+        "name": "CookieHeader",
+        "value": ""
+      },
+      {
+        "id": "lasterror",
+        "type": "hiddendata",
+        "name": "LastError",
+        "value": null
+      },
+      {
+        "id": "tags",
+        "type": "inputtags",
+        "name": "Tags",
+        "value": ""
+      }
+    ]
+  yts.json: |
+    [
+      {
+        "id": "sitelink",
+        "type": "inputstring",
+        "name": "Site Link",
+        "value": "https://yts.mx/"
+      },
+      {
+        "id": "cookieheader",
+        "type": "hiddendata",
+        "name": "CookieHeader",
+        "value": "PHPSESSID=5mo5p5gq02u0us33fqlk3u1dt3"
+      },
+      {
+        "id": "lasterror",
+        "type": "hiddendata",
+        "name": "LastError",
+        "value": null
+      },
+      {
+        "id": "tags",
+        "type": "inputtags",
+        "name": "Tags",
+        "value": ""
+      }
+    ]

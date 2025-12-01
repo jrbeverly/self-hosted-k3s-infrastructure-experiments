@@ -1,0 +1,93 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configuration
+  namespace: dashboard
+data:
+  config.yml: |
+    title: "MediaLab"
+    subtitle: "jrbeverly"
+    icon: "fas fa-photo-video"
+
+    header: true
+
+    columns: "3"
+    connectivityCheck: false
+
+    theme: default
+
+    services:
+      - name: "Media"
+        icon: "fas fa-play-circle"
+        items:
+          - name: "Watch"
+            icon: "fas fa-play"
+            subtitle: "Watch media available on the system"
+            tag: "watch,emby"
+            url: "https://watch.home.jrbeverly.dev/emby"
+          - name: "Television Management"
+            icon: "fas fa-tv"
+            subtitle: "Manage television series located on the system"
+            tag: "tv,manager"
+            url: "https://tv.home.jrbeverly.dev"
+            target: "_blank"
+          - name: "Movies Management"
+            icon: "fas fa-video"
+            subtitle: "Manage movies located on the system"
+            tag: "movies,manager"
+            url: "https://movies.home.jrbeverly.dev"
+            target: "_blank"
+      - name: "Administration"
+        icon: "fas fa-info-circle"
+        items:
+          - name: "Indexer"
+            icon: "fas fa-indent"
+            subtitle: "Index for system-wide sources"
+            tag: "data"
+            url: "https://index.home.jrbeverly.dev"
+            target: "_blank"
+          - name: "Download & Upload"
+            icon: "fas fa-cloud-download-alt"
+            subtitle: "Synchronizing files between servers"
+            tag: "data"
+            url: "https://download.home.jrbeverly.dev"
+            target: "_blank"
+          - name: "Storage"
+            icon: "fas fa-box"
+            subtitle: "Programmatic storage for file publishing."
+            tag: "utility"
+            url: "https://minio.home.jrbeverly.dev"
+            target: "_blank"
+          - name: "Containers"
+            icon: "fas fa-docker"
+            subtitle: "Packaged container images"
+            tag: "utility"
+            url: "https://containers.home.jrbeverly.dev"
+            target: "_blank"
+      - name: "Software"
+        icon: "fas fa-info-circle"
+        items:
+          - name: "VSCode"
+            icon: "fas fa-indent"
+            subtitle: "Code server instance for repositories"
+            tag: "data"
+            url: "https://vscode.home.jrbeverly.dev"
+            target: "_blank"
+      - name: "Websites"
+        icon: "fas fa-question-circle"
+        items:
+          - name: "Design Docs"
+            icon: "fas fa-box"
+            subtitle: "Design Docs."
+            tag: "utility"
+            url: "https://design.home.jrbeverly.dev"
+            target: "_blank"
+      - name: "Utility"
+        icon: "fas fa-question-circle"
+        items:
+          - name: "Dashboard"
+            icon: "fas fa-columns"
+            subtitle: "Dashboard for services on the machine."
+            tag: "utility"
+            url: #
+            target: "_blank"

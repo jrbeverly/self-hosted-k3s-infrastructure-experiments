@@ -1,0 +1,48 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: secureheaders
+  namespace: container-registry
+spec:
+  headers:
+    accessControlAllowMethods:
+      - "HEAD"
+      - "GET"
+      - "OPTIONS"
+      - "PUT"
+    accessControlAllowOriginList:
+      - "https://home.jrbeverly.dev"
+      - "https://containers.home.jrbeverly.dev"
+    accessControlAllowHeaders:
+      - "Authorization"
+      - "Accept"
+    accessControlMaxAge: 100
+    addVaryHeader: true
+    accessControlAllowCredentials: true
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: docker-registry
+  namespace: container-registry
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: container-registry-secureheaders@kubernetescrd
+spec:
+  ingressClassName: "traefik"
+  rules:
+    - host: "registry.home.jrbeverly.dev"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: docker-registry
+                port:
+                  number: 5000
+  tls:
+    - hosts:
+        - "registry.home.jrbeverly.dev"
+      secretName: "registry-tls"

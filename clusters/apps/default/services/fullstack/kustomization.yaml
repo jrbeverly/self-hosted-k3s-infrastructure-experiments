@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: fullstack
+# DB
+# Backend
+# UI
+resources:
+- namespace.yaml
+- storage.yaml
+- db-pv.yaml
+- db-svc.yaml
+- db-deploy.yaml
+- backend-deployment.yaml
+- backend-svc.yaml
+- backend-ui.yaml
+- ui-deployment.yaml
+- ui-svc.yaml
+- ui-ingress.yaml
+images:
+- name: registry.home.jrbeverly.dev/backend:latest
+  newName: registry.home.jrbeverly.dev/jrbeverl/backend
+  newTag: 929-1662683309
+- name: registry.home.jrbeverly.dev/frontend:latest
+  newName: registry.home.jrbeverly.dev/jrbeverl/frontend
+  newTag: 2074-1662683309

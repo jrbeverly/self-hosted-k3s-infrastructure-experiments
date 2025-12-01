@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: docker-registry
+  namespace: container-registry-ui
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+spec:
+  ingressClassName: "traefik"
+  rules:
+    - host: "containers.home.jrbeverly.dev"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: docker-registry-ui-docker-registry-ui-user-interface
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - "containers.home.jrbeverly.dev"
+      secretName: "registry-tls"

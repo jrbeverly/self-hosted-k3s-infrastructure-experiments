@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configuration
+  namespace: fullstack
+data:
+  .env: |
+    POSTGRES_USER=appuser
+    POSTGRES_PASSWORD=strongpasswordapp
+    POSTGRES_DB=appdb
+    POSTGRES_SERVER_HOST=postgres.fullstack.svc.cluster.local
+    CLIENT_URL=fullstack.home.jrbeverly.dev
+    SERVER_PORT=:8081
+    JWT_KEY=secretive
+    RUN_MIGRATION=true
